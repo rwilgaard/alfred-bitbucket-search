@@ -1,0 +1,10 @@
+builds:
+  - skip: true
+
+release:
+  extra_files:
+    - glob: ./alfred-bitbucket-search.alfredworkflow
+  draft: true
+
+changelog:
+  skip: false
