@@ -6,7 +6,6 @@ import (
 	"log"
 	"os"
 	"os/exec"
-	"strings"
 	"time"
 
 	aw "github.com/deanishe/awgo"
@@ -42,16 +41,6 @@ func init() {
     flag.StringVar(&authFlag, "auth", "", "authentication")
     flag.BoolVar(&cacheFlag, "cache", false, "cache repositories")
     flag.BoolVar(&commitFlag, "commits", false, "show commits for repository")
-}
-
-func hasAll(input string, words []string) bool {
-    for _, w := range words {
-        if strings.Contains(input, w) {
-            continue
-        }
-        return false
-    }
-    return true
 }
 
 func getAllRepositories(api *bb.API) ([]*bb.RepositoryList, error) {
@@ -215,12 +204,8 @@ func run() {
 
     for _, list := range repos {
         for _, repo := range list.Values {
-            // e := fmt.Sprintf("%s %s %s %s", repo.Name, repo.Slug, repo.Project.Name, repo.Project.Key)
-            // if !hasAll(strings.ToLower(e), strings.Split(strings.ToLower(query), " ")) {
-            //     continue
-            // }
             it := wf.NewItem(repo.Name).
-                Subtitle(fmt.Sprintf("%s", repo.Project.Name)).
+                Subtitle(repo.Project.Name).
                 Match(fmt.Sprintf("%s %s %s %s", repo.Name, repo.Slug, repo.Project.Name, repo.Project.Key)).
                 Var("projectKey", repo.Project.Key).
                 Var("repoSlug", repo.Slug).
