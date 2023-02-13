@@ -363,6 +363,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>864D72ED-06FB-477B-BAD7-E89873C00752</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>button1</key>
 				<string>Go back</string>
 				<key>button2</key>
@@ -396,23 +413,6 @@ Nulla facilisi. Integer lacini\na sollicitudin massa. Cras metus. Sed aliquet ri
 			<string>alfred.workflow.utility.dialog</string>
 			<key>uid</key>
 			<string>106431AD-9D4C-4139-89B3-12323F27DEA0</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>864D72ED-06FB-477B-BAD7-E89873C00752</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -795,20 +795,8 @@ Nulla facilisi. Integer lacini\na sollicitudin massa. Cras metus. Sed aliquet ri
 	</dict>
 	<key>userconfigurationconfig</key>
 	<array/>
-	<key>variables</key>
-	<dict>
-		<key>URL</key>
-		<string>https://git.netic.dk</string>
-		<key>USERNAME</key>
-		<string>rw@netic.dk</string>
-	</dict>
-	<key>variablesdontexport</key>
-	<array>
-		<string>URL</string>
-		<string>USERNAME</string>
-	</array>
 	<key>version</key>
-	<string></string>
+	<string>0.0.1</string>
 	<key>webaddress</key>
 	<string>github.com/rwilgaard/alfred-bitbucket-search</string>
 </dict>
