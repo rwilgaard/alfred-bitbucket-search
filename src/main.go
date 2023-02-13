@@ -14,9 +14,9 @@ import (
 )
 
 type workflowConfig struct {
-    URL      string `env:"URL"`
-    Username string `env:"USERNAME"`
-    APIToken string
+    URL      string `env:"bitbucket_url"`
+    Username string `env:"username"`
+    APIToken string `env:"apitoken"`
 }
 
 var (
@@ -87,46 +87,14 @@ func getCommits(api *bb.API, projectKey string, repoSlug string) (*bb.CommitList
     return commits, nil
 }
 
-func addCredentialsPrompt(authType string) {
-    wf.NewItem("Credentials not configured...").
-        Subtitle("Press ⏎ to configure").
-        Icon(aw.IconInfo).
-        Arg("auth").
-        Var("auth_type", authType).
-        Valid(true)
-    wf.SendFeedback()
-}
-
 func run() {
     wf.Args()
     flag.Parse()
     query := flag.Arg(0)
 
-    if authFlag != "" {
-        if err := wf.Keychain.Set(authFlag, os.Getenv("ALFRED_AUTHCONFIG_PASSWORD")); err != nil {
-            wf.FatalError(err)
-        }
-        return
-    }
-
-    authType := "API Token"
-    token, err := wf.Keychain.Get(authType)
-    if err != nil {
-        addCredentialsPrompt(authType)
-        return
-    }
-
-    cfg := &workflowConfig{
-        APIToken: token,
-    }
-
+    cfg := &workflowConfig{}
     if err := wf.Config.To(cfg); err != nil {
         wf.FatalError(err)
-    }
-
-    if cfg.Username == "" || cfg.URL == "" {
-        addCredentialsPrompt(authType)
-        return
     }
 
     api, err := bb.NewAPI(cfg.URL, cfg.Username, cfg.APIToken)
