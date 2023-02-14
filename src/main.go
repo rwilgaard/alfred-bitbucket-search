@@ -1,16 +1,16 @@
 package main
 
 import (
-	"flag"
-	"fmt"
-	"log"
-	"os"
-	"os/exec"
-	"time"
+    "flag"
+    "fmt"
+    "log"
+    "os"
+    "os/exec"
+    "time"
 
-	aw "github.com/deanishe/awgo"
-	bb "github.com/rwilgaard/bitbucket-go-api"
-	"go.deanishe.net/fuzzy"
+    aw "github.com/deanishe/awgo"
+    bb "github.com/rwilgaard/bitbucket-go-api"
+    "go.deanishe.net/fuzzy"
 )
 
 type workflowConfig struct {
@@ -25,6 +25,7 @@ var (
     cacheFlag     bool
     commitFlag    bool
     tagFlag       bool
+    prFlag        bool
     repoCacheName = "repositories.json"
     maxCacheAge   = 1 * time.Hour
 )
@@ -43,6 +44,7 @@ func init() {
     flag.BoolVar(&cacheFlag, "cache", false, "cache repositories")
     flag.BoolVar(&commitFlag, "commits", false, "show commits for repository")
     flag.BoolVar(&tagFlag, "tags", false, "show tags for repository")
+    flag.BoolVar(&prFlag, "pullrequests", false, "show pull requests for repository")
 }
 
 func getAllRepositories(api *bb.API) ([]*bb.RepositoryList, error) {
@@ -78,7 +80,6 @@ func getCommits(api *bb.API, projectKey string, repoSlug string) (*bb.CommitList
     query := bb.CommitsQuery{
         ProjectKey:     projectKey,
         RepositorySlug: repoSlug,
-        
     }
 
     commits, err := api.GetCommits(query)
@@ -104,6 +105,20 @@ func getTags(api *bb.API, projectKey string, repoSlug string) (*bb.TagList, erro
     return tags, nil
 }
 
+func getPullRequests(api *bb.API, projectKey string, repoSlug string) (*bb.PullRequestList, error) {
+    query := bb.PullRequestsQuery{
+        ProjectKey:     projectKey,
+        RepositorySlug: repoSlug,
+    }
+
+    pr, err := api.GetPullRequests(query)
+    if err != nil {
+        return nil, err
+    }
+
+    return pr, nil
+}
+
 func run() {
     wf.Args()
     flag.Parse()
@@ -113,6 +128,8 @@ func run() {
     if err := wf.Config.To(cfg); err != nil {
         wf.FatalError(err)
     }
+
+    backIcon := aw.Icon{Value: fmt.Sprintf("%s/icons/go-back.png", wf.Dir())}
 
     api, err := bb.NewAPI(cfg.URL, cfg.Username, cfg.APIToken)
     if err != nil {
@@ -129,13 +146,16 @@ func run() {
         }
 
         wf.NewItem("Go back").
-            Icon(aw.IconHome).
+            Icon(&backIcon).
+            Arg("go-back").
             Valid(true)
 
+        icon := aw.Icon{Value: fmt.Sprintf("%s/icons/commit.png", wf.Dir())}
         for _, c := range commits.Values {
             t := time.UnixMilli(c.CommitterTimestamp).Format("02-01-2006 15:04")
             wf.NewItem(c.Message).
                 Subtitle(fmt.Sprintf("%s  |  %s  |  %s", c.DisplayID, c.Committer.Name, t)).
+                Icon(&icon).
                 Var("message", c.Message).
                 Valid(true)
         }
@@ -158,9 +178,37 @@ func run() {
             Arg("go-back").
             Valid(true)
 
+        icon := aw.Icon{Value: fmt.Sprintf("%s/icons/tag.png", wf.Dir())}
         for _, t := range tags.Values {
             wf.NewItem(t.DisplayID).
                 Subtitle(fmt.Sprintf("Commit: %s", t.LatestCommit[0:10])).
+                Icon(&icon).
+                Valid(true)
+        }
+
+        wf.SendFeedback()
+        return
+    }
+
+    if prFlag {
+        wf.Configure(aw.SuppressUIDs(true))
+        repoSlug := os.Getenv("repoSlug")
+        projectKey := os.Getenv("projectKey")
+        tags, err := getPullRequests(api, projectKey, repoSlug)
+        if err != nil {
+            wf.FatalError(err)
+        }
+
+        wf.NewItem("Go back").
+            Icon(&backIcon).
+            Arg("go-back").
+            Valid(true)
+
+        icon := aw.Icon{Value: fmt.Sprintf("%s/icons/pull-request.png", wf.Dir())}
+        for _, p := range tags.Values {
+            wf.NewItem(p.Title).
+                Subtitle(fmt.Sprintf("%s ➔ %s", p.FromRef.DisplayID, p.ToRef.DisplayID)).
+                Icon(&icon).
                 Valid(true)
         }
 
@@ -222,8 +270,8 @@ func run() {
                 Var("lastQuery", query).
                 Valid(true)
 
-            it.NewModifier(aw.ModOpt).
-                Subtitle("Show commits").
+            it.NewModifier(aw.ModCmd).
+                Subtitle("Show Commits").
                 Arg("commits").
                 Valid(true)
 
@@ -232,6 +280,10 @@ func run() {
                 Arg("tags").
                 Valid(true)
 
+            it.NewModifier(aw.ModOpt).
+                Subtitle("Show Pull Requests").
+                Arg("pullrequests").
+                Valid(true)
         }
     }
 
