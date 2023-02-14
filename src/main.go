@@ -24,6 +24,7 @@ var (
     authFlag      string
     cacheFlag     bool
     commitFlag    bool
+    tagFlag       bool
     repoCacheName = "repositories.json"
     maxCacheAge   = 1 * time.Hour
 )
@@ -41,6 +42,7 @@ func init() {
     flag.StringVar(&authFlag, "auth", "", "authentication")
     flag.BoolVar(&cacheFlag, "cache", false, "cache repositories")
     flag.BoolVar(&commitFlag, "commits", false, "show commits for repository")
+    flag.BoolVar(&tagFlag, "tags", false, "show tags for repository")
 }
 
 func getAllRepositories(api *bb.API) ([]*bb.RepositoryList, error) {
@@ -87,6 +89,21 @@ func getCommits(api *bb.API, projectKey string, repoSlug string) (*bb.CommitList
     return commits, nil
 }
 
+func getTags(api *bb.API, projectKey string, repoSlug string) (*bb.TagList, error) {
+    query := bb.TagsQuery{
+        ProjectKey:     projectKey,
+        RepositorySlug: repoSlug,
+        OrderBy:        "MODIFICATION",
+    }
+
+    tags, err := api.GetTags(query)
+    if err != nil {
+        return nil, err
+    }
+
+    return tags, nil
+}
+
 func run() {
     wf.Args()
     flag.Parse()
@@ -120,6 +137,30 @@ func run() {
             wf.NewItem(c.Message).
                 Subtitle(fmt.Sprintf("%s  |  %s  |  %s", c.DisplayID, c.Committer.Name, t)).
                 Var("message", c.Message).
+                Valid(true)
+        }
+
+        wf.SendFeedback()
+        return
+    }
+
+    if tagFlag {
+        wf.Configure(aw.SuppressUIDs(true))
+        repoSlug := os.Getenv("repoSlug")
+        projectKey := os.Getenv("projectKey")
+        tags, err := getTags(api, projectKey, repoSlug)
+        if err != nil {
+            wf.FatalError(err)
+        }
+
+        wf.NewItem("Go back").
+            Icon(&backIcon).
+            Arg("go-back").
+            Valid(true)
+
+        for _, t := range tags.Values {
+            wf.NewItem(t.DisplayID).
+                Subtitle(fmt.Sprintf("Commit: %s", t.LatestCommit[0:10])).
                 Valid(true)
         }
 
@@ -178,13 +219,19 @@ func run() {
                 Var("projectKey", repo.Project.Key).
                 Var("repoSlug", repo.Slug).
                 Var("link", repo.Links["self"][0].Href).
-                Var("query", query).
+                Var("lastQuery", query).
                 Valid(true)
 
             it.NewModifier(aw.ModOpt).
                 Subtitle("Show commits").
                 Arg("commits").
                 Valid(true)
+
+            it.NewModifier(aw.ModCtrl).
+                Subtitle("Show Tags").
+                Arg("tags").
+                Valid(true)
+
         }
     }
 
