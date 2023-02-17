@@ -1,16 +1,17 @@
 package main
 
 import (
-    "flag"
-    "fmt"
-    "log"
-    "os"
-    "os/exec"
-    "time"
+	"flag"
+	"fmt"
+	"log"
+	"os"
+	"os/exec"
+	"time"
 
-    aw "github.com/deanishe/awgo"
-    bb "github.com/rwilgaard/bitbucket-go-api"
-    "go.deanishe.net/fuzzy"
+	aw "github.com/deanishe/awgo"
+	"github.com/deanishe/awgo/update"
+	bb "github.com/rwilgaard/bitbucket-go-api"
+	"go.deanishe.net/fuzzy"
 )
 
 type workflowConfig struct {
@@ -19,10 +20,16 @@ type workflowConfig struct {
     APIToken string `env:"apitoken"`
 }
 
+const (
+    repo          = "rwilgaard/alfred-bitbucket-search"
+    updateJobName = "checkForUpdates"
+)
+
 var (
     wf            *aw.Workflow
     authFlag      string
     cacheFlag     bool
+    updateFlag    bool
     commitFlag    bool
     tagFlag       bool
     prFlag        bool
@@ -32,19 +39,21 @@ var (
 
 func init() {
     sopts := []fuzzy.Option{
-		fuzzy.AdjacencyBonus(10.0),
-		fuzzy.LeadingLetterPenalty(-0.1),
-		fuzzy.MaxLeadingLetterPenalty(-3.0),
-		fuzzy.UnmatchedLetterPenalty(-0.5),
-	}
+        fuzzy.AdjacencyBonus(10.0),
+        fuzzy.LeadingLetterPenalty(-0.1),
+        fuzzy.MaxLeadingLetterPenalty(-3.0),
+        fuzzy.UnmatchedLetterPenalty(-0.5),
+    }
     wf = aw.New(
         aw.SortOptions(sopts...),
+        update.GitHub(repo),
     )
     flag.StringVar(&authFlag, "auth", "", "authentication")
     flag.BoolVar(&cacheFlag, "cache", false, "cache repositories")
     flag.BoolVar(&commitFlag, "commits", false, "show commits for repository")
     flag.BoolVar(&tagFlag, "tags", false, "show tags for repository")
     flag.BoolVar(&prFlag, "pullrequests", false, "show pull requests for repository")
+    flag.BoolVar(&updateFlag, "update", false, "check for updates")
 }
 
 func getAllRepositories(api *bb.API) ([]*bb.RepositoryList, error) {
@@ -61,7 +70,6 @@ func getAllRepositories(api *bb.API) ([]*bb.RepositoryList, error) {
     results = append(results, repos)
 
     for !repos.IsLastPage {
-        log.Println(repos.NextPageStart)
         query := bb.RepositoriesQuery{
             Limit: 9999,
             Start: int(repos.NextPageStart),
@@ -123,6 +131,32 @@ func run() {
     wf.Args()
     flag.Parse()
     query := flag.Arg(0)
+
+    if updateFlag {
+        wf.Configure(aw.TextErrors(true))
+        log.Println("Checking for updates...")
+        if err := wf.CheckForUpdate(); err != nil {
+            wf.FatalError(err)
+        }
+        return
+    }
+
+    if wf.UpdateCheckDue() && !wf.IsRunning(updateJobName) {
+        log.Println("Running update check in background...")
+        cmd := exec.Command(os.Args[0], "-update")
+        if err := wf.RunInBackground(updateJobName, cmd); err != nil {
+            log.Printf("Error starting update check: %s", err)
+        }
+    }
+
+    if wf.UpdateAvailable() {
+        wf.Configure(aw.SuppressUIDs(true))
+        wf.NewItem("Update Available!").
+            Subtitle("Press ⏎ to install").
+            Autocomplete("workflow:update").
+            Valid(false).
+            Icon(aw.IconInfo)
+    }
 
     cfg := &workflowConfig{}
     if err := wf.Config.To(cfg); err != nil {
@@ -241,14 +275,15 @@ func run() {
     }
 
     if wf.Cache.Expired(repoCacheName, maxCacheAge) {
-        wf.Rerun(0.3)
+        wf.Rerun(2)
         if !wf.IsRunning("cache") {
+            log.Printf("[cache] starting cache job")
             cmd := exec.Command(os.Args[0], "-cache")
             if err := wf.RunInBackground("cache", cmd); err != nil {
                 wf.FatalError(err)
             }
         } else {
-            log.Printf("cache job already running.")
+            log.Printf("[cache] cache job already running.")
         }
 
         if len(repos) == 0 {

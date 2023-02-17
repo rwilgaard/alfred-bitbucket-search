@@ -585,7 +585,7 @@ A workflow for quickly finding repositories in your Bitbucket installation.</str
 		</dict>
 	</array>
 	<key>version</key>
-	<string>0.0.3</string>
+	<string>0.0.4</string>
 	<key>webaddress</key>
 	<string>github.com/rwilgaard/alfred-bitbucket-search</string>
 </dict>
