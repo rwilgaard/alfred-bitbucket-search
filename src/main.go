@@ -1,23 +1,24 @@
 package main
 
 import (
-	"flag"
-	"fmt"
-	"log"
-	"os"
-	"os/exec"
-	"time"
+    "flag"
+    "fmt"
+    "log"
+    "os"
+    "os/exec"
+    "time"
 
-	aw "github.com/deanishe/awgo"
-	"github.com/deanishe/awgo/update"
-	bb "github.com/rwilgaard/bitbucket-go-api"
-	"go.deanishe.net/fuzzy"
+    aw "github.com/deanishe/awgo"
+    "github.com/deanishe/awgo/update"
+    bb "github.com/rwilgaard/bitbucket-go-api"
+    "go.deanishe.net/fuzzy"
 )
 
 type workflowConfig struct {
     URL      string `env:"bitbucket_url"`
     Username string `env:"username"`
     APIToken string `env:"apitoken"`
+    CacheAge int    `env:"cache_age"`
 }
 
 const (
@@ -34,7 +35,6 @@ var (
     tagFlag       bool
     prFlag        bool
     repoCacheName = "repositories.json"
-    maxCacheAge   = 1 * time.Hour
 )
 
 func init() {
@@ -144,6 +144,22 @@ func getPullRequests(api *bb.API, projectKey string, repoSlug string) (*bb.PullR
     }
 
     return pr, nil
+}
+
+func cacheRepositories(api *bb.API) error {
+    log.Printf("[cache] fetching repositories...")
+
+    repos, err := getAllRepositories(api)
+    if err != nil {
+        return err
+    }
+
+    if err := wf.Cache.StoreJSON(repoCacheName, repos); err != nil {
+        return err
+    }
+
+    log.Printf("[cache] repositories fetched")
+    return nil
 }
 
 func run() {
@@ -269,23 +285,6 @@ func run() {
         return
     }
 
-    if cacheFlag {
-        wf.Configure(aw.TextErrors(true))
-        log.Printf("[cache] fetching repositories...")
-
-        repos, err := getAllRepositories(api)
-        if err != nil {
-            wf.FatalError(err)
-        }
-
-        if err := wf.Cache.StoreJSON(repoCacheName, repos); err != nil {
-            wf.FatalError(err)
-        }
-
-        log.Printf("[cache] repositories fetched")
-        return
-    }
-
     var repos []*bb.RepositoryList
     if wf.Cache.Exists(repoCacheName) {
         if err := wf.Cache.LoadJSON(repoCacheName, &repos); err != nil {
@@ -293,24 +292,12 @@ func run() {
         }
     }
 
-    if wf.Cache.Expired(repoCacheName, maxCacheAge) {
-        wf.Rerun(2)
-        if !wf.IsRunning("cache") {
-            log.Printf("[cache] starting cache job")
-            cmd := exec.Command(os.Args[0], "-cache")
-            if err := wf.RunInBackground("cache", cmd); err != nil {
-                wf.FatalError(err)
-            }
-        } else {
-            log.Printf("[cache] cache job already running.")
+    maxCacheAge := cfg.CacheAge * int(time.Minute)
+    if wf.Cache.Expired(repoCacheName, time.Duration(maxCacheAge)) {
+        if err := cacheRepositories(api); err != nil {
+            wf.FatalError(err)
         }
-
-        if len(repos) == 0 {
-            wf.NewItem("Fetching repositories...").
-                Icon(aw.IconInfo)
-            wf.SendFeedback()
-            return
-        }
+        wf.Rerun(0.3)
     }
 
     for _, list := range repos {

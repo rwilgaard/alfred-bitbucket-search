@@ -566,6 +566,27 @@ A workflow for quickly finding repositories in your Bitbucket installation.</str
 			<key>config</key>
 			<dict>
 				<key>default</key>
+				<string>180</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>The max age in minutes for the repository cache.</string>
+			<key>label</key>
+			<string>Cache Age</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>cache_age</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
 				<string>gs</string>
 				<key>placeholder</key>
 				<string></string>
@@ -585,7 +606,7 @@ A workflow for quickly finding repositories in your Bitbucket installation.</str
 		</dict>
 	</array>
 	<key>version</key>
-	<string>0.0.4</string>
+	<string>0.0.5</string>
 	<key>webaddress</key>
 	<string>github.com/rwilgaard/alfred-bitbucket-search</string>
 </dict>
