@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/deanishe/awgo v0.29.1
-	github.com/rwilgaard/bitbucket-go-api v0.0.5
+	github.com/rwilgaard/bitbucket-go-api v0.0.6
 )
 
 require (
