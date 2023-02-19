@@ -25,18 +25,6 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>C660CC0E-AD00-430C-9CD7-7AA8BEB029DB</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>C8A6B323-1FA6-4292-9ACB-66FF3D54748D</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -96,6 +84,28 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>FCF2493E-CFC3-4E90-880A-240EAE34AE46</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>D356FE64-D333-48B2-9DED-2B947347E7E0</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>7A73F34D-533A-43D8-AE92-5DA9F230284A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>7B423BE5-D8F9-4499-9FC0-6B58D817A81F</key>
 		<array>
@@ -123,6 +133,21 @@
 				<false/>
 			</dict>
 		</array>
+		<key>FCF2493E-CFC3-4E90-880A-240EAE34AE46</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5986887C-EE34-4FFA-9F04-065563E6DB28</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>_button1</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Rasmus Wilgaard</string>
@@ -134,25 +159,6 @@
 	<string>Bitbucket Search</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>externaltriggerid</key>
-				<string>auth</string>
-				<key>passinputasargument</key>
-				<false/>
-				<key>passvariables</key>
-				<true/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>C660CC0E-AD00-430C-9CD7-7AA8BEB029DB</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -175,6 +181,79 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>externaltriggerid</key>
+				<string>details</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>5986887C-EE34-4FFA-9F04-065563E6DB28</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Searching...</string>
+				<key>script</key>
+				<string>./alfred-bitbucket-search -${arg}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Details</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>inboundconfig</key>
+			<dict>
+				<key>externalid</key>
+				<string>details</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>3DD22572-6B9F-4F55-96BE-6788607D6C40</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -185,12 +264,44 @@
 						<key>matchmode</key>
 						<integer>0</integer>
 						<key>matchstring</key>
-						<string>auth</string>
+						<string>go-back</string>
 						<key>outputlabel</key>
-						<string>auth</string>
+						<string>Go back</string>
 						<key>uid</key>
-						<string>C8A6B323-1FA6-4292-9ACB-66FF3D54748D</string>
+						<string>BF82ECDF-5197-4F34-9817-FA66FE810EF5</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>commit</string>
+						<key>outputlabel</key>
+						<string>commit</string>
+						<key>uid</key>
+						<string>D356FE64-D333-48B2-9DED-2B947347E7E0</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>4F2463DA-3FCD-4A80-9241-83DAB1268A60</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
 					<dict>
 						<key>inputstring</key>
 						<string></string>
@@ -309,92 +420,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>2</integer>
-				<key>runningsubtext</key>
-				<string>Searching...</string>
-				<key>script</key>
-				<string>./alfred-bitbucket-search -${arg}</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>skipuniversalaction</key>
-				<true/>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Commits</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>inboundconfig</key>
-			<dict>
-				<key>externalid</key>
-				<string>commits</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>3DD22572-6B9F-4F55-96BE-6788607D6C40</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>go-back</string>
-						<key>outputlabel</key>
-						<string>Go back</string>
-						<key>uid</key>
-						<string>BF82ECDF-5197-4F34-9817-FA66FE810EF5</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>4F2463DA-3FCD-4A80-9241-83DAB1268A60</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argument</key>
 				<string></string>
 				<key>passthroughargument</key>
@@ -409,6 +434,27 @@
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
 			<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>button1</key>
+				<string>Go back</string>
+				<key>button2</key>
+				<string></string>
+				<key>button3</key>
+				<string></string>
+				<key>description</key>
+				<string>{var:message}</string>
+				<key>title</key>
+				<string>Commit Message</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.dialog</string>
+			<key>uid</key>
+			<string>FCF2493E-CFC3-4E90-880A-240EAE34AE46</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -445,35 +491,42 @@ A workflow for quickly finding repositories in your Bitbucket installation.</str
 			<key>xpos</key>
 			<real>1005</real>
 			<key>ypos</key>
-			<real>330</real>
+			<real>265</real>
 		</dict>
 		<key>3DD22572-6B9F-4F55-96BE-6788607D6C40</key>
 		<dict>
 			<key>xpos</key>
 			<real>640</real>
 			<key>ypos</key>
-			<real>425</real>
+			<real>410</real>
 		</dict>
 		<key>424AF4EE-7197-40C2-B66B-42465EA5A060</key>
 		<dict>
 			<key>xpos</key>
 			<real>345</real>
 			<key>ypos</key>
-			<real>400</real>
+			<real>415</real>
 		</dict>
 		<key>4F2463DA-3FCD-4A80-9241-83DAB1268A60</key>
 		<dict>
 			<key>xpos</key>
 			<real>805</real>
 			<key>ypos</key>
-			<real>445</real>
+			<real>415</real>
+		</dict>
+		<key>5986887C-EE34-4FFA-9F04-065563E6DB28</key>
+		<dict>
+			<key>xpos</key>
+			<real>1005</real>
+			<key>ypos</key>
+			<real>410</real>
 		</dict>
 		<key>7A73F34D-533A-43D8-AE92-5DA9F230284A</key>
 		<dict>
 			<key>xpos</key>
-			<real>525</real>
+			<real>1005</real>
 			<key>ypos</key>
-			<real>720</real>
+			<real>600</real>
 		</dict>
 		<key>7B423BE5-D8F9-4499-9FC0-6B58D817A81F</key>
 		<dict>
@@ -482,19 +535,19 @@ A workflow for quickly finding repositories in your Bitbucket installation.</str
 			<key>ypos</key>
 			<real>425</real>
 		</dict>
-		<key>C660CC0E-AD00-430C-9CD7-7AA8BEB029DB</key>
-		<dict>
-			<key>xpos</key>
-			<real>525</real>
-			<key>ypos</key>
-			<real>235</real>
-		</dict>
 		<key>D2B096AD-8076-4DD5-8076-71FF239FAAA7</key>
 		<dict>
 			<key>xpos</key>
 			<real>560</real>
 			<key>ypos</key>
-			<real>455</real>
+			<real>440</real>
+		</dict>
+		<key>FCF2493E-CFC3-4E90-880A-240EAE34AE46</key>
+		<dict>
+			<key>xpos</key>
+			<real>945</real>
+			<key>ypos</key>
+			<real>440</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>

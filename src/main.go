@@ -124,7 +124,6 @@ func getTags(api *bb.API, projectKey string, repoSlug string) (*bb.TagList, erro
         return nil, fmt.Errorf("Failed to get tags. StatusCode: %d", resp.StatusCode)
     }
 
-
     return tags, nil
 }
 
@@ -222,9 +221,15 @@ func run() {
         icon := aw.Icon{Value: fmt.Sprintf("%s/icons/commit.png", wf.Dir())}
         for _, c := range commits.Values {
             t := time.UnixMilli(c.CommitterTimestamp).Format("02-01-2006 15:04")
-            wf.NewItem(c.Message).
+            i := wf.NewItem(c.Message).
                 Subtitle(fmt.Sprintf("%s  |  %s  |  %s", c.DisplayID, c.Committer.Name, t)).
                 Icon(&icon).
+                Var("link", fmt.Sprintf("%s/projects/%s/repos/%s/commits/%s", cfg.URL, projectKey, repoSlug, c.ID)).
+                Valid(true)
+
+            i.NewModifier(aw.ModCmd).
+                Subtitle("Show full commit message.").
+                Arg("commit").
                 Var("message", c.Message).
                 Valid(true)
         }
@@ -278,6 +283,7 @@ func run() {
             wf.NewItem(p.Title).
                 Subtitle(fmt.Sprintf("%s ➔ %s", p.FromRef.DisplayID, p.ToRef.DisplayID)).
                 Icon(&icon).
+                Var("link", fmt.Sprintf("%s/projects/%s/repos/%s/pull-requests/%d/overview", cfg.URL, projectKey, repoSlug, p.ID)).
                 Valid(true)
         }
 
