@@ -58,12 +58,15 @@ func init() {
 
 func getAllRepositories(api *bb.API) ([]*bb.RepositoryList, error) {
     query := bb.RepositoriesQuery{
-        Limit: 9999,
+        Limit: 1000,
     }
 
-    repos, err := api.GetRepositories(query)
+    repos, resp, err := api.GetRepositories(query)
     if err != nil {
         return nil, err
+    }
+    if resp.StatusCode != 200 {
+        return nil, fmt.Errorf("Failed to get repositories. StatusCode: %d", resp.StatusCode)
     }
 
     var results []*bb.RepositoryList
@@ -71,12 +74,15 @@ func getAllRepositories(api *bb.API) ([]*bb.RepositoryList, error) {
 
     for !repos.IsLastPage {
         query := bb.RepositoriesQuery{
-            Limit: 9999,
+            Limit: 1000,
             Start: int(repos.NextPageStart),
         }
-        repos, err = api.GetRepositories(query)
+        repos, resp, err = api.GetRepositories(query)
         if err != nil {
             return nil, err
+        }
+        if resp.StatusCode != 200 {
+            return nil, fmt.Errorf("Failed to get repositories. StatusCode: %d", resp.StatusCode)
         }
         results = append(results, repos)
     }
@@ -90,9 +96,13 @@ func getCommits(api *bb.API, projectKey string, repoSlug string) (*bb.CommitList
         RepositorySlug: repoSlug,
     }
 
-    commits, err := api.GetCommits(query)
+    commits, resp, err := api.GetCommits(query)
     if err != nil {
         return nil, err
+    }
+
+    if resp.StatusCode != 200 {
+        return nil, fmt.Errorf("Failed to get commits. StatusCode: %d", resp.StatusCode)
     }
 
     return commits, nil
@@ -105,10 +115,15 @@ func getTags(api *bb.API, projectKey string, repoSlug string) (*bb.TagList, erro
         OrderBy:        "MODIFICATION",
     }
 
-    tags, err := api.GetTags(query)
+    tags, resp, err := api.GetTags(query)
     if err != nil {
         return nil, err
     }
+
+    if resp.StatusCode != 200 {
+        return nil, fmt.Errorf("Failed to get tags. StatusCode: %d", resp.StatusCode)
+    }
+
 
     return tags, nil
 }
@@ -119,9 +134,13 @@ func getPullRequests(api *bb.API, projectKey string, repoSlug string) (*bb.PullR
         RepositorySlug: repoSlug,
     }
 
-    pr, err := api.GetPullRequests(query)
+    pr, resp, err := api.GetPullRequests(query)
     if err != nil {
         return nil, err
+    }
+
+    if resp.StatusCode != 200 {
+        return nil, fmt.Errorf("Failed to get pullrequests. StatusCode: %d", resp.StatusCode)
     }
 
     return pr, nil
