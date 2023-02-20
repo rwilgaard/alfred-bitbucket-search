@@ -61,6 +61,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>0741190B-E543-4701-AAB7-EC14A8580593</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>7A73F34D-533A-43D8-AE92-5DA9F230284A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -181,6 +193,80 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>commits</string>
+						<key>outputlabel</key>
+						<string>commits</string>
+						<key>uid</key>
+						<string>15CE2B97-EEC9-43C2-885E-0EF079F40558</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>tags</string>
+						<key>outputlabel</key>
+						<string>tags</string>
+						<key>uid</key>
+						<string>BCC3D4F5-F7B2-4FEC-9D62-980C1CE443BC</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>pullrequests</string>
+						<key>outputlabel</key>
+						<string>pullrequests</string>
+						<key>uid</key>
+						<string>9AC407BE-98B7-4300-BB30-A4C1478F3350</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>branches</string>
+						<key>outputlabel</key>
+						<string>branches</string>
+						<key>uid</key>
+						<string>0741190B-E543-4701-AAB7-EC14A8580593</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>424AF4EE-7197-40C2-B66B-42465EA5A060</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>externaltriggerid</key>
 				<string>details</string>
 				<key>passinputasargument</key>
@@ -294,66 +380,6 @@
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>4F2463DA-3FCD-4A80-9241-83DAB1268A60</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>commits</string>
-						<key>outputlabel</key>
-						<string>commits</string>
-						<key>uid</key>
-						<string>15CE2B97-EEC9-43C2-885E-0EF079F40558</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>tags</string>
-						<key>outputlabel</key>
-						<string>tags</string>
-						<key>uid</key>
-						<string>BCC3D4F5-F7B2-4FEC-9D62-980C1CE443BC</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>pullrequests</string>
-						<key>outputlabel</key>
-						<string>pullrequests</string>
-						<key>uid</key>
-						<string>9AC407BE-98B7-4300-BB30-A4C1478F3350</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>424AF4EE-7197-40C2-B66B-42465EA5A060</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -505,7 +531,7 @@ A workflow for quickly finding repositories in your Bitbucket installation.</str
 			<key>xpos</key>
 			<real>345</real>
 			<key>ypos</key>
-			<real>415</real>
+			<real>400</real>
 		</dict>
 		<key>4F2463DA-3FCD-4A80-9241-83DAB1268A60</key>
 		<dict>
