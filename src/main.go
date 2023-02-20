@@ -31,6 +31,7 @@ var (
     authFlag      string
     updateFlag    bool
     commitFlag    bool
+    branchFlag    bool
     tagFlag       bool
     prFlag        bool
     repoCacheName = "repositories.json"
@@ -49,6 +50,7 @@ func init() {
     )
     flag.StringVar(&authFlag, "auth", "", "authentication")
     flag.BoolVar(&commitFlag, "commits", false, "show commits for repository")
+    flag.BoolVar(&branchFlag, "branches", false, "show branches for repository")
     flag.BoolVar(&tagFlag, "tags", false, "show tags for repository")
     flag.BoolVar(&prFlag, "pullrequests", false, "show pull requests for repository")
     flag.BoolVar(&updateFlag, "update", false, "check for updates")
@@ -140,6 +142,33 @@ func run() {
                 Subtitle("Show full commit message.").
                 Arg("commit").
                 Var("message", c.Message).
+                Valid(true)
+        }
+
+        wf.SendFeedback()
+        return
+    }
+
+    if branchFlag {
+        wf.Configure(aw.SuppressUIDs(true))
+        repoSlug := os.Getenv("repoSlug")
+        projectKey := os.Getenv("projectKey")
+        branches, err := getBranches(api, projectKey, repoSlug)
+        if err != nil {
+            wf.FatalError(err)
+        }
+
+        wf.NewItem("Go back").
+            Icon(&backIcon).
+            Arg("go-back").
+            Valid(true)
+
+        icon := aw.Icon{Value: fmt.Sprintf("%s/icons/branch.png", wf.Dir())}
+        for _, b := range branches.Values {
+            wf.NewItem(b.DisplayID).
+                Subtitle(fmt.Sprintf("Latest commit: %s", b.LatestCommit[0:10])).
+                Icon(&icon).
+                Var("link", fmt.Sprintf("%s/projects/%s/repos/%s/browse?at=%s", cfg.URL, projectKey, repoSlug, b.ID)).
                 Valid(true)
         }
 
@@ -239,6 +268,11 @@ func run() {
             it.NewModifier(aw.ModOpt).
                 Subtitle("Show Pull Requests").
                 Arg("pullrequests").
+                Valid(true)
+
+            it.NewModifier(aw.ModShift).
+                Subtitle("Show Branches").
+                Arg("branches").
                 Valid(true)
         }
     }

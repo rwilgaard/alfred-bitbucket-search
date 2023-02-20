@@ -94,3 +94,21 @@ func getPullRequests(api *bb.API, projectKey string, repoSlug string) (*bb.PullR
 
     return pr, nil
 }
+
+func getBranches(api *bb.API, projectKey string, repoSlug string) (*bb.BranchList, error) {
+    query := bb.BranchesQuery{
+        ProjectKey:     projectKey,
+        RepositorySlug: repoSlug,
+    }
+
+    br, resp, err := api.GetBranches(query)
+    if err != nil {
+        return nil, err
+    }
+
+    if resp.StatusCode != 200 {
+        return nil, fmt.Errorf("Failed to get branches. StatusCode: %d", resp.StatusCode)
+    }
+
+    return br, nil
+}
