@@ -12,6 +12,7 @@ import (
     "github.com/deanishe/awgo/update"
     bb "github.com/rwilgaard/bitbucket-go-api"
     "go.deanishe.net/fuzzy"
+    "golang.org/x/exp/slices"
 )
 
 type workflowConfig struct {
@@ -273,6 +274,20 @@ func run() {
             it.NewModifier(aw.ModShift).
                 Subtitle("Show Branches").
                 Arg("branches").
+                Valid(true)
+
+            sshIdx := slices.IndexFunc(repo.Links["clone"], func(l bb.Link) bool { return l.Name == "ssh" })
+            httpIdx := slices.IndexFunc(repo.Links["clone"], func(l bb.Link) bool { return l.Name == "http" })
+            it.NewModifier(aw.ModOpt, aw.ModShift).
+                Subtitle("Copy HTTP clone URL").
+                Arg("copy").
+                Var("copy_value", repo.Links["clone"][httpIdx].Href).
+                Valid(true)
+
+            it.NewModifier(aw.ModCmd, aw.ModShift).
+                Subtitle("Copy SSH clone URL").
+                Arg("copy").
+                Var("copy_value", repo.Links["clone"][sshIdx].Href).
                 Valid(true)
         }
     }

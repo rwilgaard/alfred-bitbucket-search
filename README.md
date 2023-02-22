@@ -12,7 +12,9 @@ A workflow for quickly finding repositories in your Bitbucket installation.
 
 The following actions can be used on a highlighted repository:
 * `⏎` opens the repository in your browser.
-* `⌘` will show commits for the repository.
-* `⌥` will show pull requests for the repository.
-* `⌃` will show tags for the repository.
-* `⇧` will show branches for the repository
+* `⌘` + `⏎` will show commits for the repository.
+* `⌥` + `⏎` will show pull requests for the repository.
+* `⌃` + `⏎` will show tags for the repository.
+* `⇧` + `⏎` will show branches for the repository
+* `⌘` `⇧` + `⏎` will copy SSH clone URL.
+* `⌥` `⇧` + `⏎` will copy HTTP clone URL.
