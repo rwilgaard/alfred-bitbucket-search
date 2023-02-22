@@ -73,6 +73,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>A73575B1-80A6-4E0F-81CB-E01E3ED366C4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>B54B004C-E297-42D5-BF04-4DB2B4F05820</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>7A73F34D-533A-43D8-AE92-5DA9F230284A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -250,6 +262,20 @@
 						<string>branches</string>
 						<key>uid</key>
 						<string>0741190B-E543-4701-AAB7-EC14A8580593</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>copy</string>
+						<key>outputlabel</key>
+						<string>copy</string>
+						<key>uid</key>
+						<string>B54B004C-E297-42D5-BF04-4DB2B4F05820</string>
 					</dict>
 				</array>
 				<key>elselabel</key>
@@ -487,6 +513,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{var:copy_value}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>A73575B1-80A6-4E0F-81CB-E01E3ED366C4</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>browser</key>
 				<string></string>
 				<key>skipqueryencode</key>
@@ -522,10 +567,12 @@ A workflow for quickly finding repositories in your Bitbucket installation.
 
 The following actions can be used on a highlighted repository:
 * `⏎` opens the repository in your browser.
-* `⌘` will show commits for the repository.
-* `⌥` will show pull requests for the repository.
-* `⌃` will show tags for the repository.
-* `⇧` will show branches for the repository.</string>
+* `⌘` + `⏎` will show commits for the repository.
+* `⌥` + `⏎` will show pull requests for the repository.
+* `⌃` + `⏎` will show tags for the repository.
+* `⇧` + `⏎` will show branches for the repository
+* `⌘` `⇧` + `⏎` will copy SSH clone URL.
+* `⌥` `⇧` + `⏎` will copy HTTP clone URL.</string>
 	<key>uidata</key>
 	<dict>
 		<key>34D0F2FF-115A-4CAF-93D7-06A586AF3CCA</key>
@@ -547,7 +594,7 @@ The following actions can be used on a highlighted repository:
 			<key>xpos</key>
 			<real>345</real>
 			<key>ypos</key>
-			<real>400</real>
+			<real>385</real>
 		</dict>
 		<key>4F2463DA-3FCD-4A80-9241-83DAB1268A60</key>
 		<dict>
@@ -568,7 +615,7 @@ The following actions can be used on a highlighted repository:
 			<key>xpos</key>
 			<real>1005</real>
 			<key>ypos</key>
-			<real>600</real>
+			<real>635</real>
 		</dict>
 		<key>7B423BE5-D8F9-4499-9FC0-6B58D817A81F</key>
 		<dict>
@@ -576,6 +623,13 @@ The following actions can be used on a highlighted repository:
 			<real>160</real>
 			<key>ypos</key>
 			<real>425</real>
+		</dict>
+		<key>A73575B1-80A6-4E0F-81CB-E01E3ED366C4</key>
+		<dict>
+			<key>xpos</key>
+			<real>1005</real>
+			<key>ypos</key>
+			<real>520</real>
 		</dict>
 		<key>D2B096AD-8076-4DD5-8076-71FF239FAAA7</key>
 		<dict>
@@ -701,7 +755,7 @@ The following actions can be used on a highlighted repository:
 		</dict>
 	</array>
 	<key>version</key>
-	<string>1.0.0</string>
+	<string>1.1.0</string>
 	<key>webaddress</key>
 	<string>github.com/rwilgaard/alfred-bitbucket-search</string>
 </dict>
