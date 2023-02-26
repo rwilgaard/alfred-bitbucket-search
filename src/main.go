@@ -1,18 +1,17 @@
 package main
 
 import (
-    "flag"
-    "fmt"
-    "log"
-    "os"
-    "os/exec"
-    "time"
+	"fmt"
+	"log"
+	"os"
+	"os/exec"
+	"time"
 
-    aw "github.com/deanishe/awgo"
-    "github.com/deanishe/awgo/update"
-    bb "github.com/rwilgaard/bitbucket-go-api"
-    "go.deanishe.net/fuzzy"
-    "golang.org/x/exp/slices"
+	aw "github.com/deanishe/awgo"
+	"github.com/deanishe/awgo/update"
+	bb "github.com/rwilgaard/bitbucket-go-api"
+	"go.deanishe.net/fuzzy"
+	"golang.org/x/exp/slices"
 )
 
 type workflowConfig struct {
@@ -25,17 +24,11 @@ type workflowConfig struct {
 const (
     repo          = "rwilgaard/alfred-bitbucket-search"
     updateJobName = "checkForUpdates"
+    repoCacheName = "repositories.json"
 )
 
 var (
     wf            *aw.Workflow
-    authFlag      string
-    updateFlag    bool
-    commitFlag    bool
-    branchFlag    bool
-    tagFlag       bool
-    prFlag        bool
-    repoCacheName = "repositories.json"
 )
 
 func init() {
@@ -49,12 +42,6 @@ func init() {
         aw.SortOptions(sopts...),
         update.GitHub(repo),
     )
-    flag.StringVar(&authFlag, "auth", "", "authentication")
-    flag.BoolVar(&commitFlag, "commits", false, "show commits for repository")
-    flag.BoolVar(&branchFlag, "branches", false, "show branches for repository")
-    flag.BoolVar(&tagFlag, "tags", false, "show tags for repository")
-    flag.BoolVar(&prFlag, "pullrequests", false, "show pull requests for repository")
-    flag.BoolVar(&updateFlag, "update", false, "check for updates")
 }
 
 func cacheRepositories(api *bb.API) error {
@@ -75,10 +62,12 @@ func cacheRepositories(api *bb.API) error {
 
 func run() {
     wf.Args()
-    flag.Parse()
-    query := flag.Arg(0)
+    if err := cli.Parse(wf.Args()); err != nil {
+		wf.FatalError(err)
+	}
+    opts.Query = cli.Arg(0)
 
-    if updateFlag {
+    if opts.Update {
         wf.Configure(aw.TextErrors(true))
         log.Println("Checking for updates...")
         if err := wf.CheckForUpdate(); err != nil {
@@ -116,7 +105,7 @@ func run() {
         wf.FatalError(err)
     }
 
-    if commitFlag {
+    if opts.Commits {
         wf.Configure(aw.SuppressUIDs(true))
         repoSlug := os.Getenv("repoSlug")
         projectKey := os.Getenv("projectKey")
@@ -150,7 +139,7 @@ func run() {
         return
     }
 
-    if branchFlag {
+    if opts.Branches {
         wf.Configure(aw.SuppressUIDs(true))
         repoSlug := os.Getenv("repoSlug")
         projectKey := os.Getenv("projectKey")
@@ -177,7 +166,7 @@ func run() {
         return
     }
 
-    if tagFlag {
+    if opts.Tags {
         wf.Configure(aw.SuppressUIDs(true))
         repoSlug := os.Getenv("repoSlug")
         projectKey := os.Getenv("projectKey")
@@ -203,7 +192,7 @@ func run() {
         return
     }
 
-    if prFlag {
+    if opts.PullRequests {
         wf.Configure(aw.SuppressUIDs(true))
         repoSlug := os.Getenv("repoSlug")
         projectKey := os.Getenv("projectKey")
@@ -253,7 +242,7 @@ func run() {
                 Var("projectKey", repo.Project.Key).
                 Var("repoSlug", repo.Slug).
                 Var("link", repo.Links["self"][0].Href).
-                Var("lastQuery", query).
+                Var("lastQuery", opts.Query).
                 Valid(true)
 
             it.NewModifier(aw.ModCmd).
@@ -292,7 +281,7 @@ func run() {
         }
     }
 
-    wf.Filter(query)
+    wf.Filter(opts.Query)
 
     if wf.IsEmpty() {
         wf.NewItem("No results found...").
