@@ -2,6 +2,11 @@
 
 A workflow for quickly finding repositories in your Bitbucket installation.
 
+## Installation
+* [Download the latest release](https://github.com/rwilgaard/alfred-bitbucket-search/releases)
+* Open the downloaded file in Finder.
+* If running on macOS Catalina or later, you _**MUST**_ add Alfred to the list of security exceptions for running unsigned software. See [this guide](https://github.com/deanishe/awgo/wiki/Catalina) for instructions on how to do this.
+
 ## Keywords
 
 *You can change the default 'gs' keyword in the User configuration.*
