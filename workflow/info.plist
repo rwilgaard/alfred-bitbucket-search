@@ -186,6 +186,35 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>E4387984-0718-4452-A102-6C1F963B0B3F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>externaltriggerid</key>
 				<string>reposearch</string>
 				<key>passinputasargument</key>
@@ -637,6 +666,13 @@ The following actions can be used on a highlighted repository:
 			<real>560</real>
 			<key>ypos</key>
 			<real>440</real>
+		</dict>
+		<key>E4387984-0718-4452-A102-6C1F963B0B3F</key>
+		<dict>
+			<key>xpos</key>
+			<real>650</real>
+			<key>ypos</key>
+			<real>195</real>
 		</dict>
 		<key>FCF2493E-CFC3-4E90-880A-240EAE34AE46</key>
 		<dict>
