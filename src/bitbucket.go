@@ -25,7 +25,7 @@ func getAllRepositories(api *bb.API) ([]*bb.RepositoryList, error) {
     for !repos.IsLastPage {
         query := bb.RepositoriesQuery{
             Limit: 1000,
-            Start: int(repos.NextPageStart),
+            Start: uint(repos.NextPageStart),
         }
         repos, resp, err = api.GetRepositories(query)
         if err != nil {

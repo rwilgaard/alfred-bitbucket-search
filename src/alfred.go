@@ -133,6 +133,7 @@ func runSearch(api *bb.API) {
             it := wf.NewItem(repo.Name).
                 Subtitle(repo.Project.Name).
                 Match(fmt.Sprintf("%s %s %s %s", repo.Name, repo.Slug, repo.Project.Name, repo.Project.Key)).
+                UID(fmt.Sprintf("%s/%s", repo.Project.Key, repo.Slug)).
                 Var("projectKey", repo.Project.Key).
                 Var("repoSlug", repo.Slug).
                 Var("link", repo.Links["self"][0].Href).
