@@ -1,27 +1,28 @@
 package main
 
 import (
-	"log"
-	"os"
-	"os/exec"
+    "log"
+    "os"
+    "os/exec"
 
-	aw "github.com/deanishe/awgo"
-	"github.com/deanishe/awgo/update"
-	bb "github.com/rwilgaard/bitbucket-go-api"
-	"go.deanishe.net/fuzzy"
+    aw "github.com/deanishe/awgo"
+    "github.com/deanishe/awgo/update"
+    bb "github.com/rwilgaard/bitbucket-go-api"
+    "go.deanishe.net/fuzzy"
 )
 
 type workflowConfig struct {
     URL      string `env:"bitbucket_url"`
     Username string `env:"username"`
-    APIToken string `env:"apitoken"`
     CacheAge int    `env:"cache_age"`
+    APIToken string
 }
 
 const (
-    repo          = "rwilgaard/alfred-bitbucket-search"
-    updateJobName = "checkForUpdates"
-    repoCacheName = "repositories.json"
+    repo            = "rwilgaard/alfred-bitbucket-search"
+    updateJobName   = "checkForUpdates"
+    repoCacheName   = "repositories.json"
+    keychainAccount = "alfred-bitbucket-search"
 )
 
 var (
@@ -39,6 +40,7 @@ func init() {
     wf = aw.New(
         aw.SortOptions(sopts...),
         update.GitHub(repo),
+        aw.AddMagic(magicAuth{wf}),
     )
 }
 
@@ -95,6 +97,23 @@ func run() {
     if err := wf.Config.To(cfg); err != nil {
         wf.FatalError(err)
     }
+
+    if opts.Auth {
+        runAuth()
+    }
+
+    token, err := wf.Keychain.Get(keychainAccount)
+    if err != nil {
+        wf.NewItem("You're not logged in.").
+            Subtitle("Press ⏎ to authenticate").
+            Icon(aw.IconInfo).
+            Arg("auth").
+            Valid(true)
+        wf.SendFeedback()
+        return
+    }
+
+    cfg.APIToken = token
 
     api, err := bb.NewAPI(cfg.URL, cfg.Username, cfg.APIToken)
     if err != nil {

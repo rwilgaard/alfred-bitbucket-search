@@ -4,7 +4,7 @@ import "flag"
 
 var (
     opts = &options{}
-    cli = flag.NewFlagSet("alfred-bitbucket-search", flag.ContinueOnError)
+    cli  = flag.NewFlagSet("alfred-bitbucket-search", flag.ContinueOnError)
 )
 
 type options struct {
@@ -17,6 +17,7 @@ type options struct {
     Tags         bool
     PullRequests bool
     Update       bool
+    Auth         bool
 }
 
 func init() {
@@ -25,4 +26,5 @@ func init() {
     cli.BoolVar(&opts.Tags, "tags", false, "show tags for repository")
     cli.BoolVar(&opts.PullRequests, "pullrequests", false, "show pull requests for repository")
     cli.BoolVar(&opts.Update, "update", false, "check for updates")
+    cli.BoolVar(&opts.Auth, "auth", false, "authenticate")
 }

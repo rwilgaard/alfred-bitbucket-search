@@ -6,9 +6,19 @@ import (
     "time"
 
     aw "github.com/deanishe/awgo"
+    "github.com/ncruces/zenity"
     bb "github.com/rwilgaard/bitbucket-go-api"
     "golang.org/x/exp/slices"
 )
+
+type magicAuth struct {
+    wf *aw.Workflow
+}
+
+func (a magicAuth) Keyword() string     { return "clearauth" }
+func (a magicAuth) Description() string { return "Clear credentials for Bitbucket." }
+func (a magicAuth) RunText() string     { return "Credentials cleared!" }
+func (a magicAuth) Run() error          { return clearAuth() }
 
 func runCommits(api *bb.API) {
     wf.Configure(aw.SuppressUIDs(true))
@@ -175,4 +185,23 @@ func runSearch(api *bb.API) {
                 Valid(true)
         }
     }
+}
+
+func runAuth() {
+    _, pwd, err := zenity.Password(
+        zenity.Title(fmt.Sprintf("Enter API Token for %s", cfg.Username)),
+    )
+    if err != nil {
+        wf.FatalError(err)
+    }
+    if err := wf.Keychain.Set(keychainAccount, pwd); err != nil {
+        wf.FatalError(err)
+    }
+}
+
+func clearAuth() error {
+    if err := wf.Keychain.Delete(keychainAccount); err != nil {
+        return err
+    }
+    return nil
 }

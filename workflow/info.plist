@@ -93,6 +93,18 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>6E0A7268-C775-4B9A-8232-E789406930A8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>0C69E948-B1BE-4E92-9EC1-2029BAA04977</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>4F2463DA-3FCD-4A80-9241-83DAB1268A60</key>
 		<array>
@@ -186,35 +198,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>0</integer>
-				<key>hotmod</key>
-				<integer>0</integer>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>E4387984-0718-4452-A102-6C1F963B0B3F</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>externaltriggerid</key>
 				<string>reposearch</string>
 				<key>passinputasargument</key>
@@ -305,6 +288,20 @@
 						<string>copy</string>
 						<key>uid</key>
 						<string>B54B004C-E297-42D5-BF04-4DB2B4F05820</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>auth</string>
+						<key>outputlabel</key>
+						<string>auth</string>
+						<key>uid</key>
+						<string>0C69E948-B1BE-4E92-9EC1-2029BAA04977</string>
 					</dict>
 				</array>
 				<key>elselabel</key>
@@ -579,6 +576,29 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./alfred-bitbucket-search -auth</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>6E0A7268-C775-4B9A-8232-E789406930A8</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string># Bitbucket Search
@@ -623,7 +643,7 @@ The following actions can be used on a highlighted repository:
 			<key>xpos</key>
 			<real>345</real>
 			<key>ypos</key>
-			<real>385</real>
+			<real>370</real>
 		</dict>
 		<key>4F2463DA-3FCD-4A80-9241-83DAB1268A60</key>
 		<dict>
@@ -639,12 +659,19 @@ The following actions can be used on a highlighted repository:
 			<key>ypos</key>
 			<real>410</real>
 		</dict>
+		<key>6E0A7268-C775-4B9A-8232-E789406930A8</key>
+		<dict>
+			<key>xpos</key>
+			<real>1005</real>
+			<key>ypos</key>
+			<real>730</real>
+		</dict>
 		<key>7A73F34D-533A-43D8-AE92-5DA9F230284A</key>
 		<dict>
 			<key>xpos</key>
 			<real>1005</real>
 			<key>ypos</key>
-			<real>635</real>
+			<real>625</real>
 		</dict>
 		<key>7B423BE5-D8F9-4499-9FC0-6B58D817A81F</key>
 		<dict>
@@ -666,13 +693,6 @@ The following actions can be used on a highlighted repository:
 			<real>560</real>
 			<key>ypos</key>
 			<real>440</real>
-		</dict>
-		<key>E4387984-0718-4452-A102-6C1F963B0B3F</key>
-		<dict>
-			<key>xpos</key>
-			<real>650</real>
-			<key>ypos</key>
-			<real>195</real>
 		</dict>
 		<key>FCF2493E-CFC3-4E90-880A-240EAE34AE46</key>
 		<dict>
@@ -725,27 +745,6 @@ The following actions can be used on a highlighted repository:
 			<string>textfield</string>
 			<key>variable</key>
 			<string>username</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string></string>
-				<key>placeholder</key>
-				<string></string>
-				<key>required</key>
-				<true/>
-				<key>trim</key>
-				<true/>
-			</dict>
-			<key>description</key>
-			<string>Bitbucket API Token.</string>
-			<key>label</key>
-			<string>API Token</string>
-			<key>type</key>
-			<string>textfield</string>
-			<key>variable</key>
-			<string>apitoken</string>
 		</dict>
 		<dict>
 			<key>config</key>
