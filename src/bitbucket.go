@@ -6,6 +6,14 @@ import (
     bb "github.com/rwilgaard/bitbucket-go-api"
 )
 
+func testAuthentication(api *bb.API) (statusCode int, err error) {
+    _, resp, err := api.GetInboxPullRequestCount() 
+    if err != nil {
+        return resp.StatusCode, err
+    }
+    return resp.StatusCode, nil
+}
+
 func getAllRepositories(api *bb.API) ([]*bb.RepositoryList, error) {
     query := bb.RepositoriesQuery{
         Limit: 1000,
@@ -38,6 +46,22 @@ func getAllRepositories(api *bb.API) ([]*bb.RepositoryList, error) {
     }
 
     return results, nil
+}
+
+func getAllProjects(api *bb.API) (*bb.ProjectList, error) {
+    query := bb.ProjectsQuery{
+        Limit: 1000,
+    }
+
+    projects, resp, err := api.GetProjects(query)
+    if err != nil {
+        return nil, err
+    }
+    if resp.StatusCode != 200 {
+        return nil, fmt.Errorf("Failed to get projects. StatusCode: %d", resp.StatusCode)
+    }
+
+    return projects, nil
 }
 
 func getCommits(api *bb.API, projectKey string, repoSlug string) (*bb.CommitList, error) {

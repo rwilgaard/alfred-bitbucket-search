@@ -4,6 +4,7 @@ import (
     "log"
     "os"
     "os/exec"
+    "time"
 
     aw "github.com/deanishe/awgo"
     "github.com/deanishe/awgo/update"
@@ -19,10 +20,11 @@ type workflowConfig struct {
 }
 
 const (
-    repo            = "rwilgaard/alfred-bitbucket-search"
-    updateJobName   = "checkForUpdates"
-    repoCacheName   = "repositories.json"
-    keychainAccount = "alfred-bitbucket-search"
+    repo             = "rwilgaard/alfred-bitbucket-search"
+    updateJobName    = "checkForUpdates"
+    repoCacheName    = "repositories.json"
+    projectCacheName = "projects.json"
+    keychainAccount  = "alfred-bitbucket-search"
 )
 
 var (
@@ -44,9 +46,8 @@ func init() {
     )
 }
 
-func cacheRepositories(api *bb.API) error {
+func refreshCache(api *bb.API) error {
     log.Printf("[cache] fetching repositories...")
-
     repos, err := getAllRepositories(api)
     if err != nil {
         return err
@@ -55,8 +56,19 @@ func cacheRepositories(api *bb.API) error {
     if err := wf.Cache.StoreJSON(repoCacheName, repos); err != nil {
         return err
     }
-
     log.Printf("[cache] repositories fetched")
+
+    log.Printf("[cache] fetching projects...")
+    projects, err := getAllProjects(api)
+    if err != nil {
+        return err
+    }
+
+    if err := wf.Cache.StoreJSON(projectCacheName, projects); err != nil {
+        return err
+    }
+    log.Printf("[cache] projects fetched")
+
     return nil
 }
 
@@ -120,6 +132,21 @@ func run() {
         wf.FatalError(err)
     }
 
+    maxCacheAge := time.Duration(cfg.CacheAge * int(time.Minute))
+    if wf.Cache.Expired(repoCacheName, maxCacheAge) || wf.Cache.Expired(projectCacheName, maxCacheAge) {
+        if err := refreshCache(api); err != nil {
+            wf.FatalError(err)
+        }
+        wf.Rerun(0.3)
+    }
+
+    if a := autocomplete(opts.Query); a != "" {
+        if err := wf.Alfred.RunTrigger(a, opts.Query); err != nil {
+            wf.FatalError(err)
+        }
+        return
+    }
+
     if opts.Commits {
         runCommits(api)
         wf.SendFeedback()
@@ -144,9 +171,16 @@ func run() {
         return
     }
 
-    runSearch(api)
+    if opts.Projects {
+        runProjects()
+        wf.SendFeedback()
+        return
+    }
 
-    wf.Filter(opts.Query)
+    parsedQuery := parseQuery(opts.Query)
+    runSearch(parsedQuery)
+
+    wf.Filter(parsedQuery.Text)
 
     if wf.IsEmpty() {
         wf.NewItem("No results found...").
