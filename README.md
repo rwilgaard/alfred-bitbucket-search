@@ -13,6 +13,11 @@ A workflow for quickly finding repositories in your Bitbucket installation.
 
 * With `gs` you can fuzzy find repositories in Bitbucket. The default `⏎` action will open the highlighted repository in your browser.
 
+## Filters
+
+The following filters can be used in your query to filter your search:
+* Filter repositories by Project using `@project` syntax.
+
 ## Actions
 
 The following actions can be used on a highlighted repository:
