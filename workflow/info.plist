@@ -38,7 +38,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
+				<string>68C3DEC6-1C26-4DA6-B40B-9EB61EC48313</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -169,6 +169,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>68C3DEC6-1C26-4DA6-B40B-9EB61EC48313</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4F2463DA-3FCD-4A80-9241-83DAB1268A60</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>7B423BE5-D8F9-4499-9FC0-6B58D817A81F</key>
 		<array>
 			<dict>
@@ -272,6 +285,55 @@
 	<string>Bitbucket Search</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Searching...</string>
+				<key>script</key>
+				<string>./alfred-bitbucket-search commits --project "$projectKey" --repo "$repoSlug"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Commits</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>68C3DEC6-1C26-4DA6-B40B-9EB61EC48313</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -438,7 +500,7 @@
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>./alfred-bitbucket-search -${arg}</string>
+				<string>./alfred-bitbucket-search ${arg}</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -540,7 +602,7 @@
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>./alfred-bitbucket-search "$1"</string>
+				<string>./alfred-bitbucket-search repos "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -614,69 +676,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{var:copy_value}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>A73575B1-80A6-4E0F-81CB-E01E3ED366C4</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<true/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{var:link}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>7A73F34D-533A-43D8-AE92-5DA9F230284A</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>./alfred-bitbucket-search -auth</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>6E0A7268-C775-4B9A-8232-E789406930A8</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -696,6 +695,25 @@
 			<string>2BE33449-4041-4FA8-90ED-F7973138A18B</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{var:copy_value}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>A73575B1-80A6-4E0F-81CB-E01E3ED366C4</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -742,7 +760,7 @@
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>./alfred-bitbucket-search -projects "$1"</string>
+				<string>./alfred-bitbucket-search projects "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -821,12 +839,56 @@
 			<integer>1</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<true/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{var:link}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>7A73F34D-533A-43D8-AE92-5DA9F230284A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
 			<string>7DA1ADC4-8F34-4BCC-81D8-6828F65CC9C9</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./alfred-bitbucket-search -auth</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>6E0A7268-C775-4B9A-8232-E789406930A8</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -840,11 +902,6 @@ A workflow for quickly finding repositories in your Bitbucket installation.
 *You can change the default 'gs' keyword in the User configuration.*
 
 * With `gs` you can fuzzy find repositories in Bitbucket. The default `⏎` action will open the highlighted repository in your browser.
-
-## Filters
-
-The following filters can be used in your query to filter your search:
-* Filter repositories by Project using `@project` syntax.
 
 ## Actions
 
@@ -916,19 +973,26 @@ The following actions can be used on a highlighted repository:
 			<key>ypos</key>
 			<real>510</real>
 		</dict>
+		<key>68C3DEC6-1C26-4DA6-B40B-9EB61EC48313</key>
+		<dict>
+			<key>xpos</key>
+			<real>545</real>
+			<key>ypos</key>
+			<real>45</real>
+		</dict>
 		<key>6E0A7268-C775-4B9A-8232-E789406930A8</key>
 		<dict>
 			<key>xpos</key>
 			<real>910</real>
 			<key>ypos</key>
-			<real>475</real>
+			<real>695</real>
 		</dict>
 		<key>7A73F34D-533A-43D8-AE92-5DA9F230284A</key>
 		<dict>
 			<key>xpos</key>
 			<real>910</real>
 			<key>ypos</key>
-			<real>370</real>
+			<real>590</real>
 		</dict>
 		<key>7B423BE5-D8F9-4499-9FC0-6B58D817A81F</key>
 		<dict>
@@ -958,7 +1022,7 @@ The following actions can be used on a highlighted repository:
 			<key>xpos</key>
 			<real>910</real>
 			<key>ypos</key>
-			<real>265</real>
+			<real>485</real>
 		</dict>
 		<key>D2B096AD-8076-4DD5-8076-71FF239FAAA7</key>
 		<dict>
@@ -1070,7 +1134,7 @@ The following actions can be used on a highlighted repository:
 		</dict>
 	</array>
 	<key>version</key>
-	<string>1.3.0</string>
+	<string>1.2.0</string>
 	<key>webaddress</key>
 	<string>github.com/rwilgaard/alfred-bitbucket-search</string>
 </dict>
