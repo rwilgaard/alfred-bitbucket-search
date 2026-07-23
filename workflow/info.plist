@@ -86,6 +86,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>DDEE2B97-EEC9-43C2-885E-0EF079F40558</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>A73575B1-80A6-4E0F-81CB-E01E3ED366C4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -142,6 +154,78 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>D356FE64-D333-48B2-9DED-2B947347E7E0</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>D0002B97-EEC9-43C2-885E-0EF079F40558</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>C0112B97-EEC9-43C2-885E-0EF079F40558</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>C0122B97-EEC9-43C2-885E-0EF079F40558</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>C0132B97-EEC9-43C2-885E-0EF079F40558</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>C0142B97-EEC9-43C2-885E-0EF079F40558</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>A73575B1-80A6-4E0F-81CB-E01E3ED366C4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>C0162B97-EEC9-43C2-885E-0EF079F40558</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -246,6 +330,70 @@
 				<false/>
 			</dict>
 		</array>
+		<key>E1000000-0000-4000-8000-000000000001</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E1000000-0000-4000-8000-000000000002</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E1000000-0000-4000-8000-000000000002</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E1000000-0000-4000-8000-000000000003</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E1000000-0000-4000-8000-000000000003</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E1000000-0000-4000-8000-000000000004</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>E1000000-0000-4000-8000-0000000000C1</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>E1000000-0000-4000-8000-000000000005</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E1000000-0000-4000-8000-000000000004</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>660C5572-437E-498A-A095-8BF20D82A7ED</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>FCF2493E-CFC3-4E90-880A-240EAE34AE46</key>
 		<array>
 			<dict>
@@ -288,6 +436,136 @@
 			<string>alfred.workflow.output.callexternaltrigger</string>
 			<key>uid</key>
 			<string>34D0F2FF-115A-4CAF-93D7-06A586AF3CCA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>go-back</string>
+						<key>outputlabel</key>
+						<string>Go back</string>
+						<key>uid</key>
+						<string>BF82ECDF-5197-4F34-9817-FA66FE810EF5</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>commit</string>
+						<key>outputlabel</key>
+						<string>commit</string>
+						<key>uid</key>
+						<string>D356FE64-D333-48B2-9DED-2B947347E7E0</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>details</string>
+						<key>outputlabel</key>
+						<string>details</string>
+						<key>uid</key>
+						<string>D0002B97-EEC9-43C2-885E-0EF079F40558</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>commits</string>
+						<key>outputlabel</key>
+						<string>commits</string>
+						<key>uid</key>
+						<string>C0112B97-EEC9-43C2-885E-0EF079F40558</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>branches</string>
+						<key>outputlabel</key>
+						<string>branches</string>
+						<key>uid</key>
+						<string>C0122B97-EEC9-43C2-885E-0EF079F40558</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>tags</string>
+						<key>outputlabel</key>
+						<string>tags</string>
+						<key>uid</key>
+						<string>C0132B97-EEC9-43C2-885E-0EF079F40558</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>pullrequests</string>
+						<key>outputlabel</key>
+						<string>pullrequests</string>
+						<key>uid</key>
+						<string>C0142B97-EEC9-43C2-885E-0EF079F40558</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>copy</string>
+						<key>outputlabel</key>
+						<string>copy</string>
+						<key>uid</key>
+						<string>C0162B97-EEC9-43C2-885E-0EF079F40558</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>4F2463DA-3FCD-4A80-9241-83DAB1268A60</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -380,6 +658,20 @@
 						<key>uid</key>
 						<string>0C69E948-B1BE-4E92-9EC1-2029BAA04977</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>details</string>
+						<key>outputlabel</key>
+						<string>details</string>
+						<key>uid</key>
+						<string>DDEE2B97-EEC9-43C2-885E-0EF079F40558</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -392,6 +684,60 @@
 			<string>424AF4EE-7197-40C2-B66B-42465EA5A060</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Searching...</string>
+				<key>script</key>
+				<string>./alfred-bitbucket-search ${arg} "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Details</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>inboundconfig</key>
+			<dict>
+				<key>externalid</key>
+				<string>details</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>3DD22572-6B9F-4F55-96BE-6788607D6C40</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -424,106 +770,6 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>2</integer>
-				<key>runningsubtext</key>
-				<string>Searching...</string>
-				<key>script</key>
-				<string>./alfred-bitbucket-search -${arg}</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>skipuniversalaction</key>
-				<true/>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Details</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>inboundconfig</key>
-			<dict>
-				<key>externalid</key>
-				<string>details</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>3DD22572-6B9F-4F55-96BE-6788607D6C40</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>go-back</string>
-						<key>outputlabel</key>
-						<string>Go back</string>
-						<key>uid</key>
-						<string>BF82ECDF-5197-4F34-9817-FA66FE810EF5</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>commit</string>
-						<key>outputlabel</key>
-						<string>commit</string>
-						<key>uid</key>
-						<string>D356FE64-D333-48B2-9DED-2B947347E7E0</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>4F2463DA-3FCD-4A80-9241-83DAB1268A60</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
 				<integer>102</integer>
@@ -540,7 +786,7 @@
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>./alfred-bitbucket-search "$1"</string>
+				<string>./alfred-bitbucket-search search "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -573,26 +819,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>arg</key>
-					<string>{query}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>button1</key>
 				<string>Go back</string>
 				<key>button2</key>
@@ -608,6 +834,26 @@
 			<string>alfred.workflow.utility.dialog</string>
 			<key>uid</key>
 			<string>FCF2493E-CFC3-4E90-880A-240EAE34AE46</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>arg</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>D2B096AD-8076-4DD5-8076-71FF239FAAA7</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -659,7 +905,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./alfred-bitbucket-search -auth</string>
+				<string>./alfred-bitbucket-search auth</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -682,7 +928,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>echo -n "$prev_query" | sed 's/.\{1\}$//'</string>
+				<string>echo -n "$list_query" | sed 's/.\{1\}$//'</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -696,25 +942,6 @@
 			<string>2BE33449-4041-4FA8-90ED-F7973138A18B</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>externaltriggerid</key>
-				<string>search</string>
-				<key>passinputasargument</key>
-				<true/>
-				<key>passvariables</key>
-				<false/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>660C5572-437E-498A-A095-8BF20D82A7ED</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -742,7 +969,7 @@
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>./alfred-bitbucket-search -projects "$1"</string>
+				<string>./alfred-bitbucket-search projects "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -762,6 +989,25 @@
 			<string>684C5E0F-FB5F-49BC-B073-B799F86DCA4D</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>search</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>660C5572-437E-498A-A095-8BF20D82A7ED</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -804,7 +1050,7 @@
 				<false/>
 				<key>variables</key>
 				<dict>
-					<key>prev_query</key>
+					<key>list_query</key>
 					<string>{query}</string>
 				</dict>
 			</dict>
@@ -828,6 +1074,150 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>bash error.sh</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Error</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>E1000000-0000-4000-8000-000000000002</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>workflow:clearauth</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>E1000000-0000-4000-8000-000000000004</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>clearauth</string>
+						<key>outputlabel</key>
+						<string>clearauth</string>
+						<key>uid</key>
+						<string>E1000000-0000-4000-8000-0000000000C1</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>E1000000-0000-4000-8000-000000000003</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>error_msg</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>inboundconfig</key>
+			<dict>
+				<key>externalid</key>
+				<string>error</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>E1000000-0000-4000-8000-000000000001</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>button1</key>
+				<string>OK</string>
+				<key>button2</key>
+				<string></string>
+				<key>button3</key>
+				<string></string>
+				<key>description</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Error</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.dialog</string>
+			<key>uid</key>
+			<string>E1000000-0000-4000-8000-000000000005</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string># Bitbucket Search
@@ -839,23 +1229,18 @@ A workflow for quickly finding repositories in your Bitbucket installation.
 
 *You can change the default 'gs' keyword in the User configuration.*
 
-* With `gs` you can fuzzy find repositories in Bitbucket. The default `⏎` action will open the highlighted repository in your browser.
+* With `gs` you can fuzzy find repositories in Bitbucket. The default `⏎` action opens the highlighted repository in your browser.
 
 ## Filters
 
 The following filters can be used in your query to filter your search:
-* Filter repositories by Project using `@project` syntax.
+* Filter repositories by Project using `@project` syntax. Type `@` on its own to open a project picker.
 
 ## Actions
 
 The following actions can be used on a highlighted repository:
 * `⏎` opens the repository in your browser.
-* `⌘` + `⏎` will show commits for the repository.
-* `⌥` + `⏎` will show pull requests for the repository.
-* `⌃` + `⏎` will show tags for the repository.
-* `⇧` + `⏎` will show branches for the repository
-* `⌘` `⇧` + `⏎` will copy SSH clone URL.
-* `⌥` `⇧` + `⏎` will copy HTTP clone URL.</string>
+* `⌘` + `⏎` opens the details menu, where you can view commits, branches, tags and pull requests, or copy the HTTP/SSH clone URL.</string>
 	<key>uidata</key>
 	<dict>
 		<key>2BE33449-4041-4FA8-90ED-F7973138A18B</key>
@@ -889,9 +1274,9 @@ The following actions can be used on a highlighted repository:
 		<key>4F2463DA-3FCD-4A80-9241-83DAB1268A60</key>
 		<dict>
 			<key>xpos</key>
-			<real>710</real>
+			<real>720</real>
 			<key>ypos</key>
-			<real>165</real>
+			<real>80</real>
 		</dict>
 		<key>5986887C-EE34-4FFA-9F04-065563E6DB28</key>
 		<dict>
@@ -937,7 +1322,7 @@ The following actions can be used on a highlighted repository:
 			<key>xpos</key>
 			<real>65</real>
 			<key>ypos</key>
-			<real>175</real>
+			<real>190</real>
 		</dict>
 		<key>7DA1ADC4-8F34-4BCC-81D8-6828F65CC9C9</key>
 		<dict>
@@ -973,6 +1358,43 @@ The following actions can be used on a highlighted repository:
 			<real>65</real>
 			<key>ypos</key>
 			<real>540</real>
+		</dict>
+		<key>E1000000-0000-4000-8000-000000000001</key>
+		<dict>
+			<key>xpos</key>
+			<real>65</real>
+			<key>ypos</key>
+			<real>735</real>
+		</dict>
+		<key>E1000000-0000-4000-8000-000000000002</key>
+		<dict>
+			<key>note</key>
+			<string>Error</string>
+			<key>xpos</key>
+			<real>130</real>
+			<key>ypos</key>
+			<real>705</real>
+		</dict>
+		<key>E1000000-0000-4000-8000-000000000003</key>
+		<dict>
+			<key>xpos</key>
+			<real>280</real>
+			<key>ypos</key>
+			<real>725</real>
+		</dict>
+		<key>E1000000-0000-4000-8000-000000000004</key>
+		<dict>
+			<key>xpos</key>
+			<real>430</real>
+			<key>ypos</key>
+			<real>705</real>
+		</dict>
+		<key>E1000000-0000-4000-8000-000000000005</key>
+		<dict>
+			<key>xpos</key>
+			<real>430</real>
+			<key>ypos</key>
+			<real>765</real>
 		</dict>
 		<key>FCF2493E-CFC3-4E90-880A-240EAE34AE46</key>
 		<dict>
